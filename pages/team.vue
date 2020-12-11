@@ -123,6 +123,20 @@ export default {
             twitter: 'a_birang',
             website: 'https://farnabaz.ir',
             role: 'Lead developer'
+          },
+          {
+            name: 'Jeremy Riera',
+            city: 'Bordeaux, France',
+            github: 'JeremmNuxt',
+            twitter: 'K_Jeremy_',
+            role: 'Growth Hacker'
+          },
+          {
+            name: 'Sylvain Marroufin',
+            city: 'Bordeaux, France',
+            github: 'smarroufin',
+            twitter: 'smarroufin',
+            role: 'JS developer'
           }
         ]
       },
@@ -170,7 +184,7 @@ export default {
           },
           {
             name: 'Alexander Lichter',
-            city: 'Dresden, Germany',
+            city: 'Leipzig, Germany',
             github: 'manniL',
             twitter: 'TheAlexLichter',
             website: 'https://blog.lichter.io',
@@ -230,6 +244,22 @@ export default {
             github: 'Dawntraoz',
             twitter: 'dawntraoz',
             website: 'https://www.dawntraoz.com/',
+            badges: ['ambassador']
+          },
+          {
+            name: 'Tim Benniks',
+            city: 'Paris, France',
+            github: 'timbenniks',
+            twitter: 'timbenniks',
+            website: 'https://timbenniks.dev/',
+            badges: ['ambassador']
+          },
+          {
+            name: 'Gift Egwuenu',
+            city: 'Amsterdam, The Netherlands',
+            github: 'lauragift21',
+            twitter: 'lauragift_',
+            website: 'https://www.giftegwuenu.com/',
             badges: ['ambassador']
           }
         ]

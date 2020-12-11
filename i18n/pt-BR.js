@@ -17,44 +17,30 @@ module.exports = {
   header: {
     links: [
       {
-        name: 'Guias',
-        slug: 'guides',
-        type: 'newDocs',
-        routeName: 'guides-book-slug'
-      },
-      {
-        name: 'Guia',
-        slug: 'guide',
-        type: 'dynamic',
-        routeName: 'section-slug'
-      },
-      {
-        name: 'API',
-        slug: 'api',
-        type: 'dynamic',
-        routeName: 'section-slug'
+        name: 'Docs',
+        icon: 'books',
+        slug: 'docs-2.x-book-slug'
       },
       {
         name: 'Exemplos',
-        slug: 'examples',
-        type: 'dynamic',
-        routeName: 'section-slug'
+        icon: 'code',
+        slug: 'examples'
       },
       {
         name: 'FAQ',
-        slug: 'faq',
-        type: 'dynamic',
-        routeName: 'section-slug'
-      },
-      {
-        name: 'Recursos',
-        slug: 'resources',
-        type: 'static'
+        icon: 'resources',
+        slug: 'faq'
       },
       {
         name: 'Blog',
-        slug: 'blog',
-        type: 'static'
+        icon: 'blog',
+        slug: 'blog'
+      },
+      {
+        name: 'Video Courses',
+        icon: 'video',
+        href:
+          'https://masteringnuxt.com?friend=nuxt&utm_source=Nuxtjs.org&utm_medium=Link&utm_content=Navbar&utm_content=prelaunch'
       }
     ],
     search: {
@@ -105,11 +91,6 @@ module.exports = {
         title: 'Renderizado no Servidor (SSR)',
         description:
           'O modo mais popular para Nuxt. Com o SSR, também conhecido de modo "universal" ou "isomórfico", um servidor Node.js será utilizado para entregar ao cliente o HTML com base em seus componentes Vue, em vez de javascript puro. Usar SSR levará a um grande impulso no SEO, melhor UX e mais oportunidades (em comparação com uma SPA Vue tradicional). {break} Como implementar SSR por conta própria pode ser bem chato, o Nuxt.js oferece suporte completo pronto para uso e cuidará de erros comuns.'
-      },
-      spa: {
-        title: 'Aplicação de Página Única (SPA)',
-        description:
-          'Não precisa de SSR ou Geração de Site Estático, mas ainda quer tirar proveito dos benefícios que o Nuxt oferece? Você está tomando cuidado a transição de seu aplicativo e quer começar devagar? Então, o modo tradicional de SPA provavelmente será sua escolha. O resultado será uma SPA Vue comum, como você conhece, porém influenciada pela configuração do Nuxt e pelo próprio framework.'
       },
       ssg: {
         title: 'Gerado Estaticamente',
@@ -299,6 +280,9 @@ module.exports = {
       'A contribuição para esta página está encerrada. Se você gostaria de contribuir, verifique nossa',
     link: 'nova documentação, por favor.'
   },
+  example: {
+    intro: 'In this example:'
+  },
   codeSandbox: {
     open: 'Abrir no CodeSandbox'
   },
@@ -336,9 +320,31 @@ module.exports = {
       'components-glossary': 'Glossário de Componentes'
     }
   },
+  footer: {
+    links: {
+      discover: {
+        title: 'Explorar',
+        shop: 'Loja de Mercadorias',
+        consulting: 'Treinamento e Consultoria',
+        sponsorNuxt: 'Patrocínio e Contribuição'
+      },
+      about: {
+        title: 'About',
+        team: 'Nosso time',
+        design: 'Pacote de Designer',
+        contact: 'Contate-nos'
+      },
+      support: {
+        title: 'Suporte',
+        resources: 'Recursos',
+        discord: 'Fale conosco',
+        contributionGuide: 'Como contribuir'
+      }
+    }
+  },
   cookies: {
     consent: 'Usamos Cookies para análise do usuário e melhorias na página!',
-    linkLabel: 'Descibra mais sobre cookies',
+    linkLabel: 'Descubra mais sobre cookies',
     button: 'Entendi'
   }
 }

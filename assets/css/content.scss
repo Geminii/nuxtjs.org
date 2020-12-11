@@ -212,7 +212,8 @@
   & h5,
   & h6 {
     & a {
-      margin-left: -1.5rem;
+      margin: 0 -1.5rem 0 -1.5rem;
+      padding: 0 1.5rem 1.7rem 0;
     }
 
     & a,
@@ -246,7 +247,7 @@
       content: ' ';
       width: 80%;
 
-      @apply block border-2 border-nuxt-green mt-2 mb-1 rounded;
+      @apply block border-2 border-nuxt-green mt-2 mb-1 rounded border-solid;
     }
 
     & code {
@@ -265,7 +266,7 @@
       content: ' ';
       width: 80%;
 
-      @apply block border-2 border-gray-600 mt-2 mb-1 rounded;
+      @apply block border-2 border-gray-600 mt-2 mb-1 rounded border-solid;
     }
 
     & code {

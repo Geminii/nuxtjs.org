@@ -70,7 +70,7 @@ _This directory cannot be renamed without extra configuration._
 
 </base-alert>
 
-## Default Layout
+### Default Layout
 
 You can extend the main layout by adding a `layouts/default.vue` file. It will be used for all pages that don't have a layout specified. Make sure to add the `<Nuxt>` component when creating a layout to actually include the page component.
 
@@ -82,13 +82,25 @@ All you need in your layout is three lines of code which will render the page co
 </template>
 ```
 
+You can add more components here such as Navigation, Header, Footer etc.
+
+```html{}[layouts/default.vue]
+<template>
+  <div>
+    <TheHeader />
+    <Nuxt />
+    <TheFooter />
+  </div>
+</template>
+```
+
 <base-alert type="info">
 
-You can add more components here such as Navigation, Header, Footer etc. You will need to import them as well as add them to your template.
+If you have [components set to true](/docs/2.x/directory-structure/components) then there is no need to add any import statements for your components.
 
 </base-alert>
 
-## Custom Layout
+### Custom Layout
 
 Every file (_top-level_) in the `layouts` directory will create a custom layout accessible with the `layout` property in the page components.
 
@@ -116,10 +128,6 @@ export default {
 }
 </script>
 ```
-
-<app-modal>
-  <code-sandbox  :src="csb_link"></code-sandbox>
-</app-modal>
 
 ## Error Page
 

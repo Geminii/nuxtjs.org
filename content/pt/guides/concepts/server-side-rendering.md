@@ -66,9 +66,7 @@ export default function (req, res, next) {
 
 ```js{}[nuxt.config.js]
 export default: {
-  serverMiddleware: [
-     '~/api/logger'
-  ]
+  serverMiddleware: ['~/middleware/api/logger']
 }
 ```
 
@@ -99,6 +97,6 @@ O navegador recebe a página renderizada do servidor com o HTML gerado. O conte�
 
 ### Etapa 3: Navegador para Navegador
 
-A navegação entre as páginas com [`<NuxtLink>`](/guides/features/nuxt-components#the-nuxtlink-component) é feita no lado do cliente para que você não acesse o servidor novamente, a menos que você atualize o navegador.
+A navegação entre as páginas com [`<NuxtLink>`](/docs/2.x/features/nuxt-components#the-nuxtlink-component) é feita no lado do cliente para que você não acesse o servidor novamente, a menos que você atualize o navegador.
 
 <quiz :questions="questions"></quiz>

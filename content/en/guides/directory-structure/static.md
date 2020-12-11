@@ -15,7 +15,7 @@ questions:
     answers:
       - true
       - false
-    correctAnswer:
+    correctAnswer: false
   - question: Where should you put your images if you want webpack to bundle them?
     answers:
       - static
@@ -27,18 +27,18 @@ questions:
       - true
       - false
     correctAnswer: true
-  - question: You can configure the behaviour of the static directory in the nuxt.config.js
+  - question: You can configure the behavior of the static directory in the nuxt.config.js
     answers:
       - true
       - false
     correctAnswer: true
 ---
 
-The `static` directory is directly mapped to the server root () and contains files that likely won't be changed. All included files will be automatically served by Nuxt and are accessible through your project root URL.
+The `static` directory is directly mapped to the server root and contains files that likely won't be changed. All included files will be automatically served by Nuxt and are accessible through your project root URL.
 
 `/static/robots.txt` will be available at `http://localhost:3000/robots.txt`
 
-`/static/favicon.ico` will be available at  `localhost:3000/favicon.ico`
+`/static/favicon.ico` will be available at  `http://localhost:3000/favicon.ico`
 
 This option is helpful for files like `robots.txt`, `sitemap.xml` or `CNAME` (which is important for GitHub Pages deployment).
 
@@ -59,12 +59,12 @@ In your code, you can then reference these files relative to the root (`/`):
 <img src="/my-image.png" />
 
 <!-- webpacked image from assets directory -->
-<img src="@/assets/my-image-2.png" />
+<img src="~/assets/my-image-2.png" />
 ```
 
 ## Static Directory Config
 
-Should you need to you can configure the `static/` directory behaviour in the `nuxt.config.js` file.
+Should you need to you can configure the `static/` directory behavior in the `nuxt.config.js` file.
 
 ### Static asset Prefix
 
@@ -81,9 +81,5 @@ export default {
 Default: `/blog/my-image.png`
 
 With `static.prefix` disabled: `/my-image.png`
-
-<app-modal>
-  <code-sandbox  :src="csb_link"></code-sandbox>
-</app-modal>
 
 <quiz :questions="questions"></quiz>

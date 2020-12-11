@@ -1,9 +1,11 @@
 ---
-title: componentes
+title: components
 description: O diretório components contém seus componentes Vue.js. Os componentes são o que compõe as diferentes partes da sua página e podem ser reutilizados e importados para as suas páginas, layouts e até mesmo outros componentes.
 position: 3
 category: directory-structure
 csb_link: https://codesandbox.io/embed/github/nuxt-academy/guides-examples/tree/master/04_directory_structure/03_components?fontsize=14&hidenavigation=1&theme=dark
+img: /docs/2.x/components.png
+imgAlt: nuxt components module
 questions:
   - question:
     answers:
@@ -35,7 +37,7 @@ O diretório components contém seus componentes Vue.js. Os componentes são o q
 
 ### Requisitando Dados
 
-Para acessar dados assíncronos de uma API em seus componentes, você pode usar o [ método `fetch()`](/guides/features/data-fetching#the-fetch-method) do Nuxt.
+Para acessar dados assíncronos de uma API em seus componentes, você pode usar o [ método `fetch()`](/docs/2.x/features/data-fetching#the-fetch-method) do Nuxt.
 
 Usando `$fetchState.pending` podemos mostrar uma mensagem quando os dados estão esperando para serem carregados e usando`$fetchState.error` podemos mostrar uma mensagem de erro se houver um erro ao buscar os dados. Ao usar fetch, devemos declarar os dados na propriedade data. Em seguida, ele é preenchido com os dados que vêm da busca.
 
@@ -69,11 +71,13 @@ Usando `$fetchState.pending` podemos mostrar uma mensagem quando os dados estão
 
 <base-alert type="next">
 
-Veja o capítulo sobre [fetch()](/guides/features/data-fetching#the-fetch-method) para mais detalhes sobre como esse método funciona
+Veja o capítulo sobre [fetch()](/docs/2.x/features/data-fetching#the-fetch-method) para mais detalhes sobre como esse método funciona
 
 </base-alert>
 
 ## Descoberta de componentes
+
+<app-modal :src="img" :alt="imgAlt"></app-modal>
 
 A partir de `v2.13`, Nuxt pode importar automaticamente seus componentes quando usados ​​em seus templates, para ativar este recurso, defina`components: true` em sua configuração:
 
@@ -85,8 +89,10 @@ export default {
 
 Depois de criar seus componentes no diretório de components, eles estarão disponíveis para serem importados automaticamente.
 
-```html
-components/ TheHeader.vue TheFooter.vue
+```bash
+components/
+  TheHeader.vue
+  TheFooter.vue
 ```
 
 ```html{}[layouts/default.vue]

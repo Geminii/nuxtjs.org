@@ -7,14 +7,14 @@ position: 12
 
 With Nuxt.js and full static you can now use live preview out of the box which will call your API or your CMS so you can see the changes live before deploying.
 
-<base-alert> Only available when using [target:static](/guides/features/deployment-targets#static-hosting) </base-alert>
+<base-alert> Only available when using [target:static](/docs/2.x/features/deployment-targets#static-hosting) </base-alert>
 
 The preview mode will automatically refresh the page data as it uses `$nuxt.refresh` under the hood and therefore calls nuxtServerInit, asyncData and fetch on the client side.
 
 In order to activate live preview you will need to add the following plugin:
 
 ```js{}[plugins/preview.client.js]
-export default async function ({ query, enablePreview }) {
+export default function ({ query, enablePreview }) {
   if (query.preview) {
     enablePreview()
   }
@@ -53,7 +53,7 @@ yarn start
   </code-block>
 </code-group>
 
-Then you can then see your preview page by adding the query param to the end of the page you want to see once:
+Then you can see your preview page by adding the query param to the end of the page you want to see once:
 
 ```js
 ?preview=true
@@ -64,21 +64,27 @@ enablePreview should be tested locally with yarn start and not yarn
 dev
 </base-alert>
 
-For pages that are not yet generated, SPA fallback will still call the API before showing the 404 page as these pages exist on the API but are not re-generated yet
+### Previewing pages that are not yet generated
 
-For pages that are not generated and don't exist on the API, for example draft content in your CMS that is not publicly available, you will need to use the validate hook:
+For pages that are not yet generated, SPA fallback will still call the API before showing the 404 page as these pages exist on the API but are not generated yet.
+
+If you have set a validate hook, you will probably need to modify it so that it doesn't redirect to the 404 page in preview mode.
 
 ```js
-async validate({ app, params, $preview }) {
-  if ($preview) {
+validate({ params, query }) {
+  if (query.preview) {
     return true
 }
 ```
+
+### Passing data to enablePreview
+
+You can pass data to the `enablePreview` function. That data will then be available on the `$preview` context helper and on `this.$preview`.
 
 ### What's next
 
 <base-alert type="next">
 
-Check out the [Directory Structure book](/guides/directory-structure/nuxt)
+Check out the [Directory Structure book](/docs/2.x/directory-structure/nuxt)
 
 </base-alert>

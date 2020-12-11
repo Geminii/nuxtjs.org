@@ -12,7 +12,7 @@ position: 22
 
 - Type: `Object`
 
-> Use this option to customize vue SSR bundle renderer. This option is skipped for spa mode.
+> Use this option to customize vue SSR bundle renderer. This option is skipped if `ssr: false`.
 
 ```js{}[nuxt.config.js]
 export default {
@@ -97,6 +97,13 @@ You can add your own assets to the array as well. Using `req` and `res` you can 
 
 The assets will be joined together with `,` and passed as a single `Link` header.
 
+## asyncScripts
+
+- Type: `Boolean`
+  - Default: `false`
+
+> Adds an `async` attribute to `<script>` tags for Nuxt bundles, enabling them to be fetched in parallel to parsing (available with `2.14.8+`). [More information](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script).
+
 ## injectScripts
 
 - Type: `Boolean`
@@ -116,11 +123,12 @@ You may want to only disable this option if you have many pages and routes.
 ## ssr
 
 - Type: `Boolean`
-  - Default: `true` on universal mode and `false` on spa mode
+  - Default: `true`
+  - `false` only client side rendering
 
 > Enable SSR rendering
 
-This option is automatically set based on `mode` value if not provided. This can be useful to dynamically enable/disable SSR on runtime after image builds (with docker for example).
+This option is automatically set based on global `ssr` value if not provided. This can be useful to dynamically enable/disable SSR on runtime after image builds (with docker for example).
 
 ## crossorigin
 
@@ -145,7 +153,7 @@ To collapse the logs, use `'collapsed'` value.
 - Type: `Object`
   - Default: `{}`
 
-> Configure the `static/` directory behaviour
+> Configure the `static/` directory behavior
 
 See [serve-static](https://www.npmjs.com/package/serve-static) docs for possible options.
 
@@ -176,11 +184,26 @@ See [serve-static](https://www.npmjs.com/package/serve-static) docs for possible
 - Type: `Boolean` or `Object`
   - Default: `false`
 
-> Use this to configure to load external resources of Content-Security-Policy
+> Use this to configure Content-Security-Policy to load external resources
 
-Note that CSP hashes will not be added if `script-src` policy contains `'unsafe-inline'`. This is due to browser ignoring `'unsafe-inline'` if hashes are present. Set option `unsafeInlineCompatibility` to `true` if you want both hashes and `'unsafe-inline'` for CSPv1 compatibility.
+**Prerequisites:**
 
-In order to add [`<meta http-equiv="Content-Security-Policy"/>`](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP) with all the CSP policies you need to set `csp.addMeta` to `true`.
+These CSP settings are only effective when using Nuxt with `target: 'server'` to serve your SSR application. The Policies defined under `csp.policies` are added to the response `Content-Security-Policy` HTTP header.
+
+**Updating settings:**
+
+These settings are read by the Nuxt server directly from `nuxt.config.js`. This means changes to these settings take effect when the server is restarted. There is no need to rebuild the application to update the CSP settings.
+
+**HTML meta tag:**
+
+In order to add [`<meta http-equiv="Content-Security-Policy"/>`](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP) to the `<head>` you need to set `csp.addMeta` to `true`. Please note that this feature is independent of the `csp.policies` configuration:
+
+- it only adds a `script-src` type policy, and
+- the `script-src` policy only contains the hashes of the inline `<script>` tags.
+
+When `csp.addMeta` is set to `true`, the complete set of the defined policies are still added to the HTTP response header.
+
+Note that CSP hashes will not be added as `<meta>` if `script-src` policy contains `'unsafe-inline'`. This is due to browser ignoring `'unsafe-inline'` if hashes are present. Set option `unsafeInlineCompatibility` to `true` if you want both hashes and `'unsafe-inline'` for CSPv1 compatibility. In that case the `<meta>` tag will still only contain the hashes of the inline `<script>` tags, and the policies defined under `csp.policies` will be used in the `Content-Security-Policy` HTTP response header.
 
 ```js{}[nuxt.config.js]
 export default {
